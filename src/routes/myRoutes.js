@@ -25,6 +25,17 @@ const routes = (app) => {
       console.log(`DELETE request on /contacts`);
       next();
     }, deleteContact);
+
+  app.route('/contacts/:id')
+    .get((req, res, next) => {
+      console.log(`GET request on /contacts/:id`);
+      next();
+    }, getContactByID)
+
+    .put((req, res, next) => {
+      console.log(`PUT request on /contacts/:id`);
+      next();
+    }, updateContact);
 }
 
 export default routes;
