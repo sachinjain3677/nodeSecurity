@@ -20,3 +20,11 @@ export const addNewContact = (req, res) => {
     res.json(contact);
   });
 }
+
+export const deleteContact = (req, res) => {
+  contacts.remove({ _id: req.params.id}, (err, contact) => {
+    if(err)
+      res.send(err);
+    res.json({message: `Successfuly deleted ${contact}`});
+  });
+}
