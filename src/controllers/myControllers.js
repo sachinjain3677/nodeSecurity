@@ -28,3 +28,11 @@ export const deleteContact = (req, res) => {
     res.json({message: `Successfuly deleted ${contact}`});
   });
 }
+
+export const getContactByID = (req, res) => {
+  contacts.findById(req.params.id, (err, contact) => {
+    if(err)
+      res.send(err);
+    res.json(contact);
+  });
+}
