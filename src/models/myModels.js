@@ -2,18 +2,18 @@ import mongoose from 'mongoose';
 
 export const contactSchema = new mongoose.Schema({
   firstName: {
-    type: string,
+    type: String,
     required: 'Enter a first name'
   },
   lastName: {
-    type: string,
+    type: String,
     required: 'Enter a last name'
   },
   email: {
-    type: string
+    type: String
   },
   phone_number: {
-    type: string
+    type: String
   },
   created_date: {
     type: Date,
