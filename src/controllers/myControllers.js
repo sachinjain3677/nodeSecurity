@@ -10,3 +10,13 @@ export const getAllContacts = (req, res) => {
     res.json(contact);
   });
 }
+
+export const addNewContact = (req, res) => {
+  const newContact = new contacts(req.body);
+
+  newContact.save((err, contact) => {
+    if(err)
+      res.send(err);
+    res.json(contact);
+  });
+}
