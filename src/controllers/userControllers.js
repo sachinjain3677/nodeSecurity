@@ -1,6 +1,7 @@
 import {userSchema} from '../models/userModels.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 const User = mongoose.model('User', userSchema);
 
@@ -32,4 +33,16 @@ export const login = (req, res) => {
       }
     }
   })
+}
+
+export const loginReq = (req, res, next) => {
+  if(req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0]==='JWT'){
+    jwt.verify(req.headers.authorization.split(' ')[1], 'RESTFULAPIs', (err, decode) => {
+      if(err)
+        throw err;
+      next();
+    })
+  }else{
+    res.send(`Incorrect token`);
+  }
 }
