@@ -20,12 +20,7 @@ const routes = (app) => {
     .post((req, res, next) => {
       console.log(`POST request on /contacts`);
       next();
-    }, addNewContact)
-
-    .delete((req, res, next) => {
-      console.log(`DELETE request on /contacts`);
-      next();
-    }, deleteContact);
+    }, addNewContact);
 
   app.route('/contacts/:id')
     .get((req, res, next) => {
@@ -36,7 +31,13 @@ const routes = (app) => {
     .put((req, res, next) => {
       console.log(`PUT request on /contacts/:id`);
       next();
-    }, updateContact);
+    }, updateContact)
+
+    .delete((req, res, next) => {
+      console.log(`DELETE request on /contacts`);
+      next();
+    }, deleteContact);
+
 }
 
 export default routes;
