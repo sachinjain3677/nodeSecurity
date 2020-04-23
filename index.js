@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/prac_db', {
