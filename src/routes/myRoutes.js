@@ -4,6 +4,10 @@ import {getAllContacts,
         getContactByID,
         updateContact} from './../controllers/crmControllers';
 
+import {register,
+        login,
+        loginReq} from './../controllers/userControllers';
+
 const routes = (app) => {
   app.route('/')
     .get((req, res) => {
@@ -15,29 +19,40 @@ const routes = (app) => {
     .get((req, res, next) => {
       console.log(`Get request on /contacts`);
       next();
-    }, getAllContacts)
+    }, loginReq, getAllContacts)
 
     .post((req, res, next) => {
       console.log(`POST request on /contacts`);
       next();
-    }, addNewContact);
+    }, loginReq, addNewContact);
 
   app.route('/contacts/:id')
     .get((req, res, next) => {
       console.log(`GET request on /contacts/:id`);
       next();
-    }, getContactByID)
+    }, loginReq, getContactByID)
 
     .put((req, res, next) => {
       console.log(`PUT request on /contacts/:id`);
       next();
-    }, updateContact)
+    }, loginReq, updateContact)
 
     .delete((req, res, next) => {
       console.log(`DELETE request on /contacts`);
       next();
-    }, deleteContact);
+    }, loginReq, deleteContact);
 
+  app.route('/auth/register')
+    .post((req, res, next) => {
+      console.log(`POST request on /auth/register`);
+      next();
+    }, register);
+
+  app.route('/auth/login')
+    .post((req, res ,next) => {
+      console.log(`POST request on /auth/login`);
+      next();
+    }, login);
 }
 
 export default routes;
